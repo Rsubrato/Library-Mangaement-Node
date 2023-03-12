@@ -1,0 +1,55 @@
+<%- include('../partials/header.ejs')%>
+<style>
+   table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 60%;
+		margin-left: auto;
+  margin-right: auto;
+		
+    }
+  
+    td,
+    th {
+        border: 1px solid #b9b9b9;
+        text-align: left;
+        padding: 3px;
+        background-color: antiquewhite;
+    }
+  
+</style>
+    <body>
+        <h3>List of Books</h3>
+		<table>
+		<tr>
+            <th>Book Name</th>
+            <th>Book Author</th>
+            <th>Pages</th>
+			<th>Language</th>
+            <th>Status</th>
+        </tr>
+        <% for(var i = 0; i < books.length; i++) { %>
+        <tr>
+            <td><%= books[i].title %></td>
+            <td><%= books[i].author %></td>
+            <td><%= books[i].pages %></td>
+            <td><%= books[i].language %></td>
+            <%if(books[i].active==true){%>
+			<td>
+				<form action="/students/request/<%=books[i]._id%>" method="post">
+                    <button class="update" type="submit">Request</button>
+                    </form>
+			</td>
+            <%}%>
+            <%if(books[i].active==false){%>
+            <td>
+                <form action="/students/return/<%=books[i]._id%>" method="post">
+                    <button class="update" type="submit">Return</button>
+                </form>
+			</td>
+            <%}%>
+        </tr>
+        <% } %>
+		
+	</table>
+<% include ('../partials/footer.ejs') %>

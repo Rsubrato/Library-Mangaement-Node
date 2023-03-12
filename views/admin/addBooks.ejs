@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs')%>
+<body>
+     <h3>Add Books</h3>
+
+     <form class="big" action="/admin/add" method="Post">
+         <label>Title</label>
+         <input type="text" name="title" placeholder="Enter book Title" required>
+         <br>
+         <label>Author</label>
+         <input type="text" name="author" placeholder="Enter author name" required>
+         <br>
+         <label>Number of Pages</label>
+         <input type="number" name="pages" placeholder="Enter number of pages" required>
+         <br>
+         <label>Language</label>
+         <input type="text" name="language" placeholder="Language" required>
+         <br>
+         <button class="submit">Submit</button>
+     </form>
+      
+
+
+
+<%- include ('../partials/footer.ejs') %>

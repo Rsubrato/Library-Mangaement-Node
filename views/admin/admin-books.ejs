@@ -1,0 +1,54 @@
+<%- include('../partials/header.ejs')%>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 60%;
+		margin-left: auto;
+  margin-right: auto;
+		
+    }
+  
+    td,
+    th {
+        border: 1px solid #b9b9b9;
+        text-align: left;
+        padding: 3px;
+        background-color: antiquewhite;
+    }
+  
+</style>
+    <body>
+        <h3>List of Books</h3>
+        <% if(books.length<0 ){%>
+            <a>No Books Found</a>
+        <%} %>
+		<table>
+		<tr>
+            <th>Book Name</th>
+            <th>Book Author</th>
+            <th>Pages</th>
+			<th>Language</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        
+        <% for(var i = 0; i < books.length; i++) { %>
+        <tr>
+            <td><%= books[i].title %></td>
+            <td><%= books[i].author %></td>
+            <td><%= books[i].pages %></td>
+            <td><%= books[i].language %></td>
+            <td>
+				<a href="/admin/books/update/<%= books[i]._id %>"><button class="update" type="submit">Update</button></a>
+			</td>
+            <td>
+                <a href="/admin/books/delete/<%= books[i]._id %>"><button class="update" type="submit">Delete</button></a>
+			</td>
+        </tr>
+        <% } %>
+		
+	</table>
+    <a href="/admin/add"><buton class="add" type="submit">Add Books</buton></a>
+    <% include ('../partials/footer.ejs') %>
+
